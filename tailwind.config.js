@@ -11,6 +11,13 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      colors: {
+        // 'カラー名': 'カラーコード'
+        'name-bgcollar': '#DBEEF4',
+        'name-collar': '#4F81BD',
+        'self-bgcollar': '#C6D9F1',
+        'self-table-collar': '#376092'
+      },
     },
   },
   plugins: [],

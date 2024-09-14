@@ -1,0 +1,8 @@
+npm install classnames prop-types use-immer react-hook-form @hookform/resolvers yup styled-jsx styled-components @emotion/react @emotion/styled react-error-boundary
+npm install react-app-rewired customize-cra --save-dev
+P.265から
+npm install @mui/material @mui/icons-material @emotion/react @emotion/styled storybook @storybook/jest react-query recoil react-router-dom react-helmet-async 
+
+
+※npx create-react-app my-react-ts はやってない
+※11-3-3(prisma) もしてない

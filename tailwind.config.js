@@ -16,7 +16,10 @@ module.exports = {
         'name-bgcollar': '#DBEEF4',
         'name-collar': '#4F81BD',
         'self-bgcollar': '#C6D9F1',
-        'self-table-collar': '#376092'
+        'self-table-collar': '#376092',
+        'black': '#17375E',
+        'green': '#EBF1DE',
+        'dark-green': '#00B050',
       },
     },
   },

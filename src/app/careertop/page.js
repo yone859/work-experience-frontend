@@ -32,7 +32,7 @@ export default function Home() {
     }, []);
 
   async function  getMoreCareerList() {
-    const workExp = await fetchWeather(careerListLength);
+    const workExp = await fetchWorkExpAPI(careerListLength);
     setCareerList(careerList.concat(workExp.career));
   };
 
@@ -51,7 +51,7 @@ export default function Home() {
       </div>
 
       <WorkInfo careerList={careerList} key={"career"}/>
-      <button onClick={getMoreCareerList}>カウント</button>
+      <button onClick={getMoreCareerList}>さらに表示</button>
    </>
   );
 }

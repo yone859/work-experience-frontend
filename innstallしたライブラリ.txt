@@ -6,3 +6,32 @@ npm install @mui/material @mui/icons-material @emotion/react @emotion/styled sto
 
 ※npx create-react-app my-react-ts はやってない
 ※11-3-3(prisma) もしてない
+
+
+cd ~/work-experience-backend
+sudo service mysql start
+cargo run
+http://127.0.0.1:3000/top
+
+
+
+nextクロームでデバッグ
+拡張機能JavaScript Debuggerインストール
+以下を.vscode/launch.json記載
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "attach",
+        "name": "Nextjs: Server",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "port": 3001
+      }
+    ],
+  }

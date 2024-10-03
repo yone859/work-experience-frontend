@@ -1,6 +1,5 @@
 "use client";
-import { Inconsolata } from 'next/font/google';
-import { useEffect, useState } from 'react';
+
 import React from 'react';
 
 export default  function WorkInfo({ careerList }) {
@@ -8,7 +7,7 @@ export default  function WorkInfo({ careerList }) {
         <>
         {careerList?.map((obj,i) => (
             <React.Fragment key={obj.project_no}>
-                <div key={obj.project_no}>
+                <div key={obj.project_no} className="ml-2">
                     <div className="mt-10  w-4/5">
                     <div className="text-black text-xl font-semibold">
                     {obj.project_title}：{obj.member_headcount}名：{obj.participate_date}～{obj.leave_date}（8ヵ月）

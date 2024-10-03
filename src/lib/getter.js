@@ -25,7 +25,7 @@ export function createQuali(record) {
 export function createCareer(record) {
   const dev_tool = [];
   const pjt_support_tool = [];
-  const dev_tool_mst = ["インフラ","DB","デプロイ","調査ツール","使用OS"];
+  const dev_tool_mst = ["インフラ","DB","フレームワーク","デプロイ","調査ツール","使用OS","デザインツール"];
   const pjt_support_tool_mst = ["タスク管理ツール","ドキュメント管理"];
  
   for (const [key, val] of Object.entries(record)) {
@@ -54,12 +54,33 @@ export function createCareer(record) {
   };
 }
   export async  function fetchWorkExpAPI(careerListLength=0) {
+    
   const res = await fetch(
     `http://localhost:3000/top?current_record=${careerListLength+1}&next_fetch_record=${careerListLength+3}`, {
     cache: 'no-store',
-  });
+  })
+  .then(response => {
+    // レスポンスが成功かどうか確認
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    // レスポンスを JSON として返す
+    return response.json();
 
-  const result = await res.json();
+  })
+  .then(data => {
+    // 取得したデータを処理
+    return  data;
+  })
+  .catch(error => {
+    // エラーハンドリング
+    console.error('API取得中にエラーが発生しました:', error);
+  });
+  return fetchWorkExpAPI2(res)
+
+  }
+  export async  function fetchWorkExpAPI2(result) {
+
   // const result2 = await res.text();
   const self_intro = result[0].self_intro;
 

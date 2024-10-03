@@ -1,26 +1,20 @@
-// POSTするデータを作成
-
-export   function fetchAuth(form) {
-
-  // try {
-    const response   =  fetch(`http://localhost:3000/aaa`, {
-      cache: 'no-store',
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(form)
-    })
-
-
-    
-    .then(data => {
-      try {
-        const jsonData = JSON.parse(data); // 文字列をJSONに変換
-        console.log(jsonData);
-      } catch (e) {
-        console.error('Response is not valid JSON:', e);
-      }
-    })
-    .catch(error => {
-      console.error('Fetch error:', error);
-    });
+export function fetchAuth(form) {
+  let fetchResult = ""
+  fetch(`http://localhost:3000/login`, {
+          cache: 'no-store',
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(form)
+        })
+  .then((response) => response.json()) // 同様にPromiseを返すためthenする
+  .then((data) => {
+    console.log(data.message);
+    fetchResult = data.message;
+  })
+  .catch(error => {
+    // エラーハンドリング
+    console.error('Network error:', error);
+    fetchResult = Promise.reject(new Error('Network error occurred'));
+  });
+  return fetchResult
 }

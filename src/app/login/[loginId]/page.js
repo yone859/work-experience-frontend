@@ -19,17 +19,15 @@ export default function Layout({params}) {
     });
   };
 
-  const  login = async () => {
+  const  clickEvent =  () => {
     try {
-      const loginRes = await fetchAuth(form);
-      console.log("Failed to fetch:");
+      const loginRes =  fetchAuth(form);
+      console.error(loginRes);
     } catch (error) {
       console.error("Failed to fetch:", error);
     }
   };
-
-
-
+  
   return (
     <>
     <Card className="max-w-sm mx-auto mt-20">
@@ -50,7 +48,7 @@ export default function Layout({params}) {
           <Checkbox id="remember" />
           <Label htmlFor="remember">Remember me</Label>
         </div>
-        <Button type="submit" onClick={login}>Submit</Button>
+        <Button type="submit" onClick={clickEvent}>Submit</Button>
       </form>
     </Card>
     {/* {children} */}

@@ -9,7 +9,7 @@ export default  function SelfIntro({ SelfIntro }) {
         <div className="text-2xl text-self-table-collar pl-4 font-semibold">
           自己PR
         </div>
-        <div className="pl-8">
+        <div className="pl-8 whitespace-pre-wrap">
           {SelfIntro}
         </div>
       </div>

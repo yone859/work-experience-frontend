@@ -56,7 +56,7 @@ export function createCareer(record) {
   export async  function fetchWorkExpAPI(careerListLength=0) {
     
   const res = await fetch(
-    `http://localhost:3000/top?current_record=${careerListLength+1}&next_fetch_record=${careerListLength+3}`, {
+    `http://${process.env.NEXT_PUBLIC_API_HOST_NAME}/top?current_record=${careerListLength+1}&next_fetch_record=${careerListLength+3}`, {
     cache: 'no-store',
   })
   .then(response => {

@@ -1,5 +1,3 @@
-// import prisma from './prisma';
-
 export function createBook(book) {
   const authors = book.volumeInfo.authors;
   const price = book.saleInfo.listPrice;
@@ -53,7 +51,7 @@ export function createCareer(record) {
     pjt_support_tool: pjt_support_tool
   };
 }
-  export async  function fetchWorkExpAPI(careerListLength=0) {
+export async  function fetchWorkExpAPI(careerListLength=0) {
     
   const res = await fetch(
     `http://${process.env.NEXT_PUBLIC_API_HOST_NAME}/top?current_record=${careerListLength+1}&next_fetch_record=${careerListLength+3}`, {
@@ -76,27 +74,53 @@ export function createCareer(record) {
     // エラーハンドリング
     console.error('API取得中にエラーが発生しました:', error);
   });
-  return fetchWorkExpAPI2(res)
 
-  }
-  export async  function fetchWorkExpAPI2(result) {
-
-  // const result2 = await res.text();
-  const self_intro = result[0].self_intro;
-
-  const qualis = [];
   const career = [];
 
-  for (const record of result[1].quali) {
-    qualis.push(createQuali(record));
-  }
-  for (const record of result[2].work_experience) {
+  for (const record of res.work_experience) {
     career.push(createCareer(record));
+  }
+
+  return {
+    career: career
+  };
+}
+
+
+export async  function fetchBasicInfoAPI(careerListLength=0) {
+    
+  const res = await fetch(
+    `http://${process.env.NEXT_PUBLIC_API_HOST_NAME}/get-basic-info`, {
+    cache: 'no-store',
+  })
+  .then(response => {
+    // レスポンスが成功かどうか確認
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    // レスポンスを JSON として返す
+    return response.json();
+
+  })
+  .then(data => {
+    // 取得したデータを処理
+    return  data;
+  })
+  .catch(error => {
+    // エラーハンドリング
+    console.error('API取得中にエラーが発生しました:', error);
+  });
+
+  const self_intro = res[0].self_intro;
+  const qualis = [];
+
+  for (const record of res[1].quali) {
+    qualis.push(createQuali(record));
   }
 
   return {
     self_intro: self_intro,
     qualis: qualis,
-    career: career
   };
+
 }

@@ -1,8 +1,16 @@
-import { Inconsolata } from 'next/font/google';
+import SelfIntro from '@/components/Career/SelfIntro';
+import Qualification from '@/components/Career/Qualification';
+import { fetchBasicInfoAPI } from '@/lib/getter';
 
-const fnt = Inconsolata({ subsets: ['latin'] })
+export default async function Name({ children }) {
+  let workExp =[];
+      try {
+          workExp = await fetchBasicInfoAPI(0);
 
-export default  function Name({ children }) {
+      } catch (error) {
+          console.error("Failed to fetch user list:", error);
+      }
+
     return ( 
         <>
     <div className="mt-10 pl-10 pb-7 w-4/5 pt-10 bg-name-bgcollar text-name-collar font-semibold flex place-items-center" >
@@ -22,6 +30,10 @@ export default  function Name({ children }) {
               性別：男
             </div>
           </div>
+        </div>
+        <div className="mt-10  w-4/5 flex " >
+          <SelfIntro SelfIntro={workExp?.self_intro} key={"self_intro"}/>
+          <Qualification  Qualification={workExp?.qualis} key={"qualis"}/>
         </div>
     </>
      );

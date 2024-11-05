@@ -1,10 +1,4 @@
 // import './globals.css';
-import { Inconsolata } from 'next/font/google';
-import Loading from '@/app/careertop/loading';
-import { Suspense } from 'react'
-
-const fnt = Inconsolata({ subsets: ['latin'] })
-
 export default  function Qualification({ Qualification }) {
 
   function parseCustomDate(dateStr) {
